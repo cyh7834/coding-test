@@ -1,0 +1,18 @@
+SELECT 
+    CASE WHEN G.GRADE > 7 THEN S.NAME 
+    ELSE NULL 
+    END, 
+    G.GRADE,
+    S.MARKS
+FROM 
+    STUDENTS S 
+JOIN 
+    GRADES G
+ON 
+    G.MIN_MARK <= S.MARKS 
+    AND 
+    G.MAX_MARK >= S.MARKS
+ORDER BY 
+    G.GRADE DESC, 
+    S.NAME, 
+    S.MARKS;
