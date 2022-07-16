@@ -1,28 +1,16 @@
 class Solution {
-    public String solution(String new_id) {
-        String answer = "";
+    public int solution(String s) {
+        s = s.replace("zero", "0")
+                .replace("one", "1")
+                .replace("two", "2")
+                .replace("three", "3")
+                .replace("four", "4")
+                .replace("five", "5")
+                .replace("six", "6")
+                .replace("seven", "7")
+                .replace("eight", "8")
+                .replace("nine", "9");
 
-        answer = new_id.toLowerCase()
-                .replaceAll("[^a-z0-9-_.]", "")
-                .replaceAll("[.]{2,}", ".")
-                .replaceAll("^\\.", "").replaceAll("\\.$", "");
-
-        if (answer.equals("")) {
-            answer = "a";
-        }
-
-        if (answer.length() >= 16) {
-            answer = answer.substring(0, 15);
-        }
-
-        answer = answer.replaceAll("\\.$+", "");
-        
-        if(answer.length() < 3) {
-            while(answer.length() < 3) {
-                answer += answer.charAt(answer.length() - 1);
-            }
-        }
-        
-        return answer;
+        return Integer.parseInt(s);
     }
 }
