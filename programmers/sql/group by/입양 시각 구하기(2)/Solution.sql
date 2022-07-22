@@ -1,0 +1,26 @@
+WITH RECURSIVE HOUR AS (
+    SELECT 
+        0 AS HOUR
+    UNION ALL
+    SELECT 
+        HOUR + 1 
+    FROM 
+        HOUR 
+    WHERE 
+        HOUR < 23
+)
+SELECT 
+    H.HOUR, IFNULL(A.COUNT, 0) AS COUNT
+FROM 
+    HOUR H
+LEFT JOIN
+    (SELECT 
+        HOUR(DATETIME) AS HOUR, COUNT(*) COUNT 
+     FROM 
+        ANIMAL_OUTS 
+    GROUP BY 
+        HOUR) A
+ON 
+    H.HOUR = A.HOUR
+ORDER BY 
+    H.HOUR;
