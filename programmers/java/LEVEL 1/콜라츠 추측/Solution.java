@@ -7,7 +7,7 @@ class Solution {
 
         for (int i = 1; i < 501; i++) {
             longNum = calculate(longNum);
-            System.out.println(i + " " + longNum);
+
             if (longNum == 1)
                 return i;
         }
