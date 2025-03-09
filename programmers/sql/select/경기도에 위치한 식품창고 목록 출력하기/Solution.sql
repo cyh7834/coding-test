@@ -1,12 +1,8 @@
 SELECT 
-    MEMBER_ID, MEMBER_NAME, GENDER, DATE_FORMAT(DATE_OF_BIRTH, '%Y-%m-%d') AS DATE_OF_BIRTH 
+    warehouse_id, warehouse_name, address, ifnull(freezer_yn, 'N') as FREEZER_YN 
 FROM
-    MEMBER_PROFILE 
-WHERE 
-    GENDER = 'W' 
-AND
-    MONTH(DATE_OF_BIRTH) = 3 
-AND
-    TLNO IS NOT NULL 
-ORDER BY
-    MEMBER_ID;
+    food_warehouse 
+WHERE
+    address LIKE '경기도%' 
+ORDER BY 
+    warehouse_id;
